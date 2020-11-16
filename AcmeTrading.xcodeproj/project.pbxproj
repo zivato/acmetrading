@@ -9,12 +9,17 @@
 /* Begin PBXBuildFile section */
 		908391CE256141C700FEF9BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908391CD256141C700FEF9BE /* AppDelegate.swift */; };
 		908391D0256141C700FEF9BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908391CF256141C700FEF9BE /* SceneDelegate.swift */; };
-		908391D2256141C700FEF9BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908391D1256141C700FEF9BE /* ViewController.swift */; };
 		908391D5256141C700FEF9BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 908391D3256141C700FEF9BE /* Main.storyboard */; };
 		908391D7256141C900FEF9BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 908391D6256141C900FEF9BE /* Assets.xcassets */; };
 		908391DA256141C900FEF9BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 908391D8256141C900FEF9BE /* LaunchScreen.storyboard */; };
-		908391E5256141C900FEF9BE /* AcmeTradingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908391E4256141C900FEF9BE /* AcmeTradingTests.swift */; };
 		908391F0256141C900FEF9BE /* AcmeTradingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908391EF256141C900FEF9BE /* AcmeTradingUITests.swift */; };
+		908392042561425B00FEF9BE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908392032561425B00FEF9BE /* Constants.swift */; };
+		90839209256148FF00FEF9BE /* Front End Technical Test.png in Resources */ = {isa = PBXBuildFile; fileRef = 90839208256148FF00FEF9BE /* Front End Technical Test.png */; };
+		9083920E256149DD00FEF9BE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083920D256149DD00FEF9BE /* LoginVC.swift */; };
+		9083921625614A0C00FEF9BE /* ProfileListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083921525614A0C00FEF9BE /* ProfileListVC.swift */; };
+		9083921B2561518700FEF9BE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083921A2561518700FEF9BE /* Reachability.swift */; };
+		908392252561AEA200FEF9BE /* LoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908392242561AEA200FEF9BE /* LoginValidator.swift */; };
+		908392302561B61200FEF9BE /* LoginValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083922F2561B61200FEF9BE /* LoginValidatorTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,17 +43,22 @@
 		908391CA256141C700FEF9BE /* AcmeTrading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcmeTrading.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		908391CD256141C700FEF9BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		908391CF256141C700FEF9BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		908391D1256141C700FEF9BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		908391D4256141C700FEF9BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		908391D6256141C900FEF9BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		908391D9256141C900FEF9BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		908391DB256141C900FEF9BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		908391E0256141C900FEF9BE /* AcmeTradingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AcmeTradingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		908391E4256141C900FEF9BE /* AcmeTradingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcmeTradingTests.swift; sourceTree = "<group>"; };
 		908391E6256141C900FEF9BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		908391EB256141C900FEF9BE /* AcmeTradingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AcmeTradingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		908391EF256141C900FEF9BE /* AcmeTradingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcmeTradingUITests.swift; sourceTree = "<group>"; };
 		908391F1256141C900FEF9BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		908392032561425B00FEF9BE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		90839208256148FF00FEF9BE /* Front End Technical Test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Front End Technical Test.png"; sourceTree = "<group>"; };
+		9083920D256149DD00FEF9BE /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		9083921525614A0C00FEF9BE /* ProfileListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileListVC.swift; sourceTree = "<group>"; };
+		9083921A2561518700FEF9BE /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		908392242561AEA200FEF9BE /* LoginValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidator.swift; sourceTree = "<group>"; };
+		9083922F2561B61200FEF9BE /* LoginValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidatorTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +111,16 @@
 			children = (
 				908391CD256141C700FEF9BE /* AppDelegate.swift */,
 				908391CF256141C700FEF9BE /* SceneDelegate.swift */,
-				908391D1256141C700FEF9BE /* ViewController.swift */,
+				9083920D256149DD00FEF9BE /* LoginVC.swift */,
+				9083921525614A0C00FEF9BE /* ProfileListVC.swift */,
 				908391D3256141C700FEF9BE /* Main.storyboard */,
 				908391D6256141C900FEF9BE /* Assets.xcassets */,
+				90839208256148FF00FEF9BE /* Front End Technical Test.png */,
 				908391D8256141C900FEF9BE /* LaunchScreen.storyboard */,
 				908391DB256141C900FEF9BE /* Info.plist */,
+				908392032561425B00FEF9BE /* Constants.swift */,
+				9083921A2561518700FEF9BE /* Reachability.swift */,
+				908392242561AEA200FEF9BE /* LoginValidator.swift */,
 			);
 			path = AcmeTrading;
 			sourceTree = "<group>";
@@ -113,8 +128,8 @@
 		908391E3256141C900FEF9BE /* AcmeTradingTests */ = {
 			isa = PBXGroup;
 			children = (
-				908391E4256141C900FEF9BE /* AcmeTradingTests.swift */,
 				908391E6256141C900FEF9BE /* Info.plist */,
+				9083922F2561B61200FEF9BE /* LoginValidatorTest.swift */,
 			);
 			path = AcmeTradingTests;
 			sourceTree = "<group>";
@@ -233,6 +248,7 @@
 			files = (
 				908391DA256141C900FEF9BE /* LaunchScreen.storyboard in Resources */,
 				908391D7256141C900FEF9BE /* Assets.xcassets in Resources */,
+				90839209256148FF00FEF9BE /* Front End Technical Test.png in Resources */,
 				908391D5256141C700FEF9BE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,9 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				908391D2256141C700FEF9BE /* ViewController.swift in Sources */,
 				908391CE256141C700FEF9BE /* AppDelegate.swift in Sources */,
 				908391D0256141C700FEF9BE /* SceneDelegate.swift in Sources */,
+				9083921B2561518700FEF9BE /* Reachability.swift in Sources */,
+				908392042561425B00FEF9BE /* Constants.swift in Sources */,
+				9083920E256149DD00FEF9BE /* LoginVC.swift in Sources */,
+				908392252561AEA200FEF9BE /* LoginValidator.swift in Sources */,
+				9083921625614A0C00FEF9BE /* ProfileListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				908391E5256141C900FEF9BE /* AcmeTradingTests.swift in Sources */,
+				908392302561B61200FEF9BE /* LoginValidatorTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
