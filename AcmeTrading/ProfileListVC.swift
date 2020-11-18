@@ -34,11 +34,11 @@ class ProfileListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         } else {
             rowHeight = 193.0
         }
-
+        
         return CGFloat(rowHeight)
     }
     
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.profileListItems.count
     }
@@ -79,116 +79,116 @@ class ProfileListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.starRating.text = "\(starEmoji)" + " (" + "\(numRatings))"
         
         let imageURLStr = self.profileListItems[indexPath.row].profileImageUrl
-            if let imageURL = URL(string: imageURLStr) {
-                cell.tag = indexPath.row
-                let task = URLSession.shared.dataTask(with: imageURL) { data, response, error in
-                    guard let data = data, error == nil else { return }
-                    DispatchQueue.main.async() {
-                        if cell.tag == indexPath.row{
-                            cell.profileImage.image = UIImage(data: data)
-                        }
+        if let imageURL = URL(string: imageURLStr) {
+            cell.tag = indexPath.row
+            let task = URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                guard let data = data, error == nil else { return }
+                DispatchQueue.main.async() {
+                    if cell.tag == indexPath.row{
+                        cell.profileImage.image = UIImage(data: data)
                     }
                 }
-                task.resume()
             }
+            task.resume()
+        }
         
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-
+        
     }
     
     @IBOutlet var tableView: UITableView!
-        
+    
     func getProfiles(authToken: String) {
-
+        
         var request = URLRequest(url: URL(string: Constants.API.dummyProfileList)!)
         request.httpMethod = "GET"
-
+        
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(authToken, forHTTPHeaderField: "Authorization")
-
-
+        
+        
         let session = URLSession.shared
-
+        
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             print(response!)
             do {
                 if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
                     
                     if let httpResponse = response as? HTTPURLResponse {
-                   
+                        
                         if httpResponse.statusCode == 200 {
                             
-                                if let results = json["data"] as? [String:Any] {
-                                    
-                                    
-                                                                        
-                                    if let profiles = results["profiles"] as? [[String:Any]] {
-                                        print(profiles)
-                                        for profile in profiles {
-                                            guard let name = profile["name"] else {
-                                                    return
-                                            }
-                                            
-                                            guard let star = profile["star_level"] else {
-                                                    return
-                                            }
-                                            
-                                            guard let distance = profile["distance_from_user"] else {
-                                                    return
-                                            }
-                                            
-                                            guard let numRatings = profile["num_ratings"] else {
-                                                    return
-                                            }
-                                            
-                                            guard let profileImgUrl = profile["profile_image"] else {
-                                                    return
-                                            }
-                                            
-                                            let listItem = ProfileListItem()
-                                            listItem.name = name as! String
-                                            listItem.starLevel = star as! Int
-                                            listItem.distanceFromUser = distance as! String
-                                            listItem.numRatings = numRatings as! Int
-                                            listItem.profileImageUrl = profileImgUrl as! String
-                                            self.profileListItems.append(listItem)
-                                            
-                                            if self.profileListItems.count == results.count {
+                            if let results = json["data"] as? [String:Any] {
+                                
+                                
+                                
+                                if let profiles = results["profiles"] as? [[String:Any]] {
+                                    print(profiles)
+                                    for profile in profiles {
+                                        guard let name = profile["name"] else {
+                                            return
+                                        }
+                                        
+                                        guard let star = profile["star_level"] else {
+                                            return
+                                        }
+                                        
+                                        guard let distance = profile["distance_from_user"] else {
+                                            return
+                                        }
+                                        
+                                        guard let numRatings = profile["num_ratings"] else {
+                                            return
+                                        }
+                                        
+                                        guard let profileImgUrl = profile["profile_image"] else {
+                                            return
+                                        }
+                                        
+                                        let listItem = ProfileListItem()
+                                        listItem.name = name as! String
+                                        listItem.starLevel = star as! Int
+                                        listItem.distanceFromUser = distance as! String
+                                        listItem.numRatings = numRatings as! Int
+                                        listItem.profileImageUrl = profileImgUrl as! String
+                                        self.profileListItems.append(listItem)
+                                        
+                                        if self.profileListItems.count == results.count {
                                             DispatchQueue.main.async {
                                                 self.profileListItems = self.profileListItems.sorted { $0.starLevel > $1.starLevel }
-
+                                                
                                                 self.tableView.reloadData()
                                             }
                                             
-                                            }
-                                                
                                         }
                                         
                                     }
-                                }
-                            } else {
-                                
-                                if let results = json["data"] as? [String:Any] {
                                     
-                                    if let errorMessage = results["user_message"] as? [String:Any] {
+                                }
+                            }
+                        } else {
+                            
+                            if let results = json["data"] as? [String:Any] {
+                                
+                                if let errorMessage = results["user_message"] as? [String:Any] {
+                                    
+                                    if let message = errorMessage["message"] as? String {
                                         
-                                        if let message = errorMessage["message"] as? String {
-
                                         print(errorMessage)
                                         self.showErrorAlert(errorMessage: message)
-                                        }
-
                                     }
+                                    
                                 }
-                                
                             }
+                            
+                        }
                     }
                 }
-                    
+                
             } catch {
                 print("error")
             }
@@ -202,7 +202,7 @@ class ProfileListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
+        
         getProfiles(authToken: Constants.User.authToken)
         addLogoToNav()
         
@@ -237,28 +237,28 @@ class ProfileListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func showErrorAlert(errorMessage: String) {
         // Create the alert controller
-            let alertController = UIAlertController(title: "Oops!", message: errorMessage, preferredStyle: .alert)
-
-            // Create the actions
+        let alertController = UIAlertController(title: "Oops!", message: errorMessage, preferredStyle: .alert)
+        
+        // Create the actions
         let okAction = UIAlertAction(title: "Retry", style: UIAlertAction.Style.default) {
-                UIAlertAction in
-                NSLog("OK Pressed")
+            UIAlertAction in
+            NSLog("OK Pressed")
             self.getProfiles(authToken: Constants.User.authToken)
-            }
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
-                UIAlertAction in
-                NSLog("Cancel Pressed")
-            }
-
-            // Add the actions
-            alertController.addAction(okAction)
-            alertController.addAction(cancelAction)
-
-            // Present the controller
-            self.present(alertController, animated: true, completion: nil)
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        self.present(alertController, animated: true, completion: nil)
     }
     
-         
-
+    
+    
 }
 

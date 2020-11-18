@@ -14,7 +14,7 @@ class LoginVC: UIViewController {
     @IBOutlet var passwordLbl: UITextField!
     
     
-
+    
     
     @IBAction func login(_ sender: Any) {
         userLogin(username: userNameLbl.text ?? "", password: passwordLbl.text ?? "")
@@ -25,24 +25,24 @@ class LoginVC: UIViewController {
         DispatchQueue.main.async { // UIView.alpha must be used from main thread only
             self.alertMessage.alpha = 1
             self.alertMessage.text = message
-        
-        if isError {
-            self.alertMessage.backgroundColor = Constants.Interface.errorRed
-        } else {
-            self.alertMessage.backgroundColor = Constants.Interface.successGreen
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            UIView.animate(withDuration: 0.3) {
-                self.alertMessage.alpha = 0
+            
+            if isError {
+                self.alertMessage.backgroundColor = Constants.Interface.errorRed
+            } else {
+                self.alertMessage.backgroundColor = Constants.Interface.successGreen
             }
             
-            if !isError {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                UIView.animate(withDuration: 0.3) {
+                    self.alertMessage.alpha = 0
+                }
                 
-                self.performSegue(withIdentifier: "goToList", sender: self)
-
+                if !isError {
+                    
+                    self.performSegue(withIdentifier: "goToList", sender: self)
+                    
+                }
             }
-        }
         }
     }
     
@@ -59,29 +59,29 @@ class LoginVC: UIViewController {
         } else {
             validCredentials = false
         }
-
-        if validCredentials {
         
-        let params = ["username":username, "password":password] as Dictionary<String, String>
-
-        var request = URLRequest(url: URL(string: Constants.API.dummyLogin)!)
-        request.httpMethod = "POST"
-        request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        let session = URLSession.shared
-
-        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-            print(response!)
-            do {
-                if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
-                    
-                    if let httpResponse = response as? HTTPURLResponse {
-                   
-                        if httpResponse.statusCode == 200 {
+        if validCredentials {
+            
+            let params = ["username":username, "password":password] as Dictionary<String, String>
+            
+            var request = URLRequest(url: URL(string: Constants.API.dummyLogin)!)
+            request.httpMethod = "POST"
+            request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let session = URLSession.shared
+            
+            let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                print(response!)
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                        
+                        if let httpResponse = response as? HTTPURLResponse {
                             
+                            if httpResponse.statusCode == 200 {
+                                
                                 if let results = json["data"] as? [String:Any] {
-                                                                        
+                                    
                                     if let authToken = results["auth_token"] as? String {
                                         if let refreshToken = results["refresh_token"] as? String {
                                             if let successMessage = results["user_message"] as? String {
@@ -101,32 +101,32 @@ class LoginVC: UIViewController {
                                     print(results)
                                     
                                     if let errorMessage = results["user_message"] as? String {
-
+                                        
                                         print(errorMessage)
                                         //display error message
                                         self.showAlertResponse(isError: true, message: errorMessage)
-
+                                        
                                     }
                                 }
                                 
                             }
+                        }
                     }
-                }
                     
-            } catch {
-                print("error")
-            }
+                } catch {
+                    print("error")
+                }
+                
+            })
             
-        })
-        
-        task.resume()
+            task.resume()
             
         } else {
             
             if !validUsername {
-            self.showAlertResponse(isError: true, message: "Your username is invalid")
+                self.showAlertResponse(isError: true, message: "Your username is invalid")
             } else if !validPassword {
-            self.showAlertResponse(isError: true, message: "Your password is invalid")
+                self.showAlertResponse(isError: true, message: "Your password is invalid")
             }
         }
     }
@@ -141,7 +141,7 @@ class LoginVC: UIViewController {
         passwordLbl.setLeftPaddingPoints(Constants.Interface.textfeldInset)
         alertMessage.textContainerInset = UIEdgeInsets(top: Constants.Interface.textfeldInset, left: Constants.Interface.textfeldInset, bottom: Constants.Interface.textfeldInset, right: Constants.Interface.textfeldInset)
         
-
+        
     }
     
     
